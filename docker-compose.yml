@@ -16,6 +16,7 @@ services:
       - SLACK_CLIENT_SECRET
       - SLACK_SIGNING_SECRET
       - SLACK_VERIFICATION_TOKEN
+      - MONGO_URL=mongodb://mongodb:27017
     networks:
       slack:
         aliases:
@@ -36,3 +37,17 @@ services:
     depends_on:
       bot-app:
         condition: service_started
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - mongo:/data/db
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+volumes:
+  mongo:
+    driver: local
