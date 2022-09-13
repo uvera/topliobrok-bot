@@ -5,6 +5,8 @@ networks:
 services:
   bot-app:
     container_name: bot-app
+    depends_on:
+      - mongodb
     build:
       context: ./
       dockerfile: Dockerfile.prod
