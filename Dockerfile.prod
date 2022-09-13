@@ -1,4 +1,4 @@
-FROM ruby:3.1.2
+FROM ruby:3.1.1
 RUN mkdir -p /opt/bot-app
 
 WORKDIR /opt/bot-app
