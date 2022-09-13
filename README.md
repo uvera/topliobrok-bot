@@ -82,7 +82,7 @@ Create a `/ping` Slash command. Set the _Request URL_, e.g. `https://79f0f633543
 
 ![](screenshots/slash-commands-ping-edit.png)
 
-There's no need to invite the bot to a channel. Try `/ping`, the bot will respond with `pong` from [lib/slash_commands/ping.rb](lib/slash_commands/ping.rb).
+There's no need to invite the bot to a channel. Try `/ping`, the bot will respond with `pong` from [lib/slash_commands/ping.rb](lib/slash_commands/topli.rb).
 
 ![](screenshots/slash-commands-demo.gif)
 

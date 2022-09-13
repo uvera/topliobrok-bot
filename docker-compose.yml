@@ -1,0 +1,38 @@
+networks:
+  slack:
+    name: slack
+
+services:
+  bot-app:
+    container_name: bot-app
+    build:
+      context: ./
+      dockerfile: Dockerfile.prod
+    ports:
+      - "9889:9889"
+    environment:
+      - PORT=9889
+      - SLACK_CLIENT_ID
+      - SLACK_CLIENT_SECRET
+      - SLACK_SIGNING_SECRET
+      - SLACK_VERIFICATION_TOKEN
+    networks:
+      slack:
+        aliases:
+          - bot
+  nginx:
+    container_name: slack_nginx_proxy
+    build:
+      context: ./
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "8989:8989"
+    networks:
+      slack:
+        aliases:
+          - slack_nginx_proxy
+    volumes:
+      - /data/slack_bot_certs:/etc/nginx/certs
+    depends_on:
+      bot-app:
+        condition: service_started

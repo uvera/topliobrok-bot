@@ -8,7 +8,9 @@ Dir[File.expand_path('config/initializers', __dir__) + '/**/*.rb'].sort.each do 
   require file
 end
 
-Mongoid.load!(File.expand_path('config/mongoid.yml', __dir__), ENV['RACK_ENV'])
+if ENV['MONGOID_ENABLED']
+  Mongoid.load!(File.expand_path('config/mongoid.yml', __dir__), ENV['RACK_ENV'])
+end
 
 require_relative 'lib/models'
 require_relative 'lib/events'
