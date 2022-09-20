@@ -67,7 +67,7 @@ module Utils
       end
       ret += "Price for normal portion: #{price_normal} RSD\n"
       if price_large && price_large > 0
-        ret += "Price for large portion: #{price_normal} RSD\n"
+        ret += "Price for large portion: #{price_large} RSD\n"
       end
       if day_before_ordering
         ret += '*Only if ordered day before!*'
